@@ -1,0 +1,8 @@
+#!/bin/bash
+### 
+# requires node and mocha
+# installing mocha:
+#   npm install --global mocha
+###
+
+mocha .
