@@ -9,16 +9,14 @@ function statement(invoice, plays) {
   }).format;
 
   for (let perf of invoice.performances) {
-    let thisAmount = amountFor(perf);
-
     // add credits by volume
     volumeCredits += Math.max(perf.audience - 30, 0);
     // add an extra credit for every 10 comedy expectator
     if ("comedy" === playFor(perf).type) volumeCredits += Math.floor(perf.audience / 5);
   
     // display the line for this request
-    result += ` ${playFor(perf).name}: ${format(thisAmount / 100)} (${perf.audience} seats)\n`;
-    totalAmount += thisAmount;
+    result += ` ${playFor(perf).name}: ${format(amountFor(perf) / 100)} (${perf.audience} seats)\n`;
+    totalAmount += amountFor(perf);
   }
 
   result += `Amount owed is ${format(totalAmount / 100)}\n`;
